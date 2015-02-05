@@ -10,7 +10,7 @@
         currentOccupancy,
         reservedClasses,
         reservedEquipment,
-        upcomingReservations,
+        reservations,
 
         selectors = {
             'roomOccupancyItemTemplate' : '#room-occupancy-item-template',
@@ -102,15 +102,11 @@
                 ).then(function(a, b) {
                     reservedClasses = a;
                     reservedEquipment = b;
-					upcomingReservations = reservedClasses.concat(reservedEquipment);
-					upcomingReservations = filterParseResultsByDateAndStartTime(upcomingReservations);
-					upcomingReservations.sort(sortParseResultsByStartTime);
                     renderDeck();
                 });
         },
 
         renderDeck = function() {
-			console.log(upcomingReservations);
             activateDeckCarousel();
         },
 
@@ -206,18 +202,6 @@
                 responsive: {
                     0: {
                         items: 4
-                    },
-                    768: {
-                        items: 4
-                    },
-                    915: {
-                        items: 5
-                    },
-                    1200: {
-                        items: 6
-                    },
-                    1600: {
-                        items: 7
                     }
                 }
             });
